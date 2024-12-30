@@ -31,3 +31,5 @@ If you enjoy using this Userscript and it helps you, consider making a donation 
 Any amount of money is greatly appreciated and if you don't want to, you don't have to, this Userscript is completely free to use by anyone.
 
 Your donation will help me realize my dream of programming as a career.
+
+You can also give this project a star if you don't feel like donating!
