@@ -24,3 +24,6 @@ Now, next time you click on a Steam community post with a different language set
 
 >[!NOTE]
 >If you enable the script while on a Steam community page, it will not refresh for you, you have to refresh manually, so the script can be enabled, it will then set the language and refresh one more time.
+
+## Support
+If you enjoy using this Userscript and it helps you, consider making a donation to my PayPal. Your donation will help me realize my dream of programming as a career. Any amount of money is greatly appreciated and if you don't want to, you don't have to, this Userscript is completely free to use by anyone.
