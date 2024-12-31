@@ -1,7 +1,10 @@
 # SCLC
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q6187AYL)
 
-SCLC (**S**team **C**ommunity **L**anguage **C**hanger) is a userscript that changes the language of steamcommunity.com.
+SCLC (**S**team **C**ommunity **L**anguage **C**hanger) is a small and pretty basic Userscript that changes the language of Steam on any steamcommunity.com page..
+
+>[!WARNING]
+>This script does not change the language of the actual post, it's only purpose is to change Steam's language.
 
 Have you ever tried to search for something Steam-related and clicked on a Steam community post on Google and the site was not in your language? Well, fear not dear user as this extension is going to help you!
 
