@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Steam Community Language Changer
 // @namespace    https://github.com/smooll-d
-// @copyright    2024, Jakub Skowron
+// @copyright    2024-2025, Jakub Skowron
 // @license      BSD-3-Clause
-// @version      1.0.2
+// @version      1.0.3
 // @description  Changes language to preffered on Steam's community pages
 // @author       smooll
 // @match        https://steamcommunity.com/*
