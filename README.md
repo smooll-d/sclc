@@ -11,7 +11,9 @@ Have you ever tried to search for something Steam-related and clicked on a Steam
 When you have this extension installed it will change any Steam community site to your preffered language.
 
 ## Installation
-It is very simple, click on the latest release, click on the userscript and install it. That's it.
+There are two ways to install SCLC:
+* Install from the [latest release](https://github.com/smooll-d/sclc/releases/latest)
+* Install form [GreasyFork](https://greasyfork.org/pl/scripts/522391-steam-community-language-changer)
 
 ## Usage
 By default SCLC is set to change every page to English. If you want to change that, edit the script in your userscript manager of choice, find the line shown below:
@@ -29,6 +31,10 @@ Now, next time you click on a Steam community post with a different language set
 
 >[!NOTE]
 >If you enable the script while on a Steam community page, it will not refresh for you, you have to refresh manually, so the script can be enabled, it will then set the language and refresh one more time.
+
+## To-Dos
+Hopefully I can implement these in the future so it's much easier to use the script:
+* [ ] Use browser language to set Steam's language so user doesn't have to edit the script and set it themself
 
 ## Support
 If you enjoy using this Userscript and it helps you, consider making a donation to my [Ko-Fi](https://ko-fi.com/smooll).
