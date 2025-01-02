@@ -8,7 +8,7 @@
 // @author       smooll
 // @match        https://steamcommunity.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=steamcommunity.com
-// @resource     languages https://https://github.com/smooll-d/sclc/raw/refs/heads/browser-language/languages.json
+// @resource     languages https://github.com/smooll-d/sclc/raw/refs/heads/browser-language/languages.json
 // @grant        GM.getResourceText
 // @updateURL    https://github.com/smooll-d/sclc/raw/refs/heads/master/sclc.meta.js
 // @downloadURL  https://github.com/smooll-d/sclc/releases/latest/download/sclc.user.js
