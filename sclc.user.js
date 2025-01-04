@@ -3,47 +3,80 @@
 // @namespace    https://github.com/smooll-d
 // @copyright    2024-2025, Jakub Skowron
 // @license      BSD-3-Clause
-// @version      1.0.3
-// @description  Changes language to preffered on Steam's community pages
+// @version      2.0.0
+// @description  Changes Steam's language to browser's on community posts
 // @author       smooll
 // @match        https://steamcommunity.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=steamcommunity.com
-// @grant        none
+// @require      https://cdn.jsdelivr.net/npm/@trim21/gm-fetch@0.2.1
+// @run-at       document-start
+// @grant        GM.xmlHttpRequest
+// @grant        GM.setValue
+// @grant        GM.getValue
+// @connect      raw.githubusercontent.com
 // @updateURL    https://github.com/smooll-d/sclc/raw/refs/heads/master/sclc.meta.js
 // @downloadURL  https://github.com/smooll-d/sclc/releases/latest/download/sclc.user.js
 // @supportURL   https://github.com/smooll-d/sclc/issues
 // @homepageURL  https://github.com/smooll-d/sclc
 // ==/UserScript==
 
-// Input your preffered language (full name in english, lowercase, e.g. english, polish, german, japanese)
-const language = "english";
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// DO NOT TOUCH ANYTHING BEYOND THIS COMMENT UNLESS YOU UNDERSTAND THE CODE AND WOULD LIKE TO HELP IMPROVE IT //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Retrieve parameters from community page URL
+const URLParameters = new URLSearchParams(window.location.search);
 
 // Parameter "l" responsible for setting page's language
 const languageParameter = "l";
 
-// Regex pattern to match Steam community page URL
-const pattern = new RegExp("https?:\/\/(?:www\.)?steamcommunity\.com\/.*");
+// Language used by the browser
+const browserLanguage = navigator.language;
 
-(function() {
+// Function responsible for changing the language
+const changeLanguage = (language) => {
+    // Set "l" to your preffered language
+    URLParameters.set(languageParameter, language);
+
+    // Actually change URL's parameters so the page can change to your preffered language
+    window.location.search = URLParameters;
+}
+
+(async () => {
     'use strict';
 
-    // Check if pattern matches URL of page. If it is, proceed further, if not, don't do anything
-    if (pattern.test(window.location.href)) {
-        // Retrieve parameters from community page URL
-        const URLParameters = new URLSearchParams(window.location.search);
+    // Check if URL has parameter "l"
+    if (URLParameters.has(languageParameter)) {
+        // Send a request to github.com for languages.json
+        const response = await GM_fetch("https://github.com/smooll-d/sclc/raw/refs/heads/browser-language/languages.json", {
+            method: "GET",
+            onerror: function(err) {
+                console.log("sclc: failed to fetch languages.json! error: ", err);
+            }
+        });
 
-        // Check if URL has parameter "l" and if it's not equal to your preffered language
-        // If both of these are true, proceed further, if any one of these is false, don't do anything
-        if (URLParameters.has(languageParameter) && URLParameters.get(languageParameter) !== language) {
-            // Set "l" to your preffered language
-            URLParameters.set(languageParameter, language);
+        // Store languages.json as JSON in languages
+        const languages = await response.json();
 
-            // Actually change URL's parameters so the page can change to your preffered language
-            window.location.search = URLParameters;
+        // Iterate through languages.json
+        for (const language in languages) {
+            // Check if languages.json has languages not anything else,
+            // this check has to be here as if it wasn't the code in the if statement
+            // would run for functions and other JavaScript things that languages
+            // has (loosely explained + idk if I understand correctly), and we don't want that
+            if (languages.hasOwnProperty(language)) {
+                // Check if any of the codes in languages.json equals the browserLanguage variable
+                if (browserLanguage === languages[language].code) {
+                    // Add your preffred language to localStorage, so it's available on multiple executions of this script
+                    await GM.setValue("sclc_pl", languages[language].name);
+                }
+            }
+        }
+
+        // Your preffered language
+        const preferredLanguage = await GM.getValue("sclc_pl", "english");
+
+        // Check if "l" is not equal to your preferred language
+        // If it's not, change language to your preferred language.
+        // If it is, don't do anything as it is already set to your preferred language
+        if (URLParameters.get(languageParameter) !== preferredLanguage) {
+            changeLanguage(preferredLanguage);
         }
     }
 })();
