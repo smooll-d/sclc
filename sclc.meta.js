@@ -3,7 +3,7 @@
 // @namespace    https://github.com/smooll-d
 // @copyright    2024-2025, Jakub Skowron
 // @license      BSD-3-Clause
-// @version      2.0.0
+// @version      2.0.1
 // @description  Changes Steam's language to browser's on community posts
 // @author       smooll
 // @match        https://steamcommunity.com/*
@@ -14,6 +14,7 @@
 // @grant        GM.setValue
 // @grant        GM.getValue
 // @connect      raw.githubusercontent.com
+// @connect      github.com
 // @updateURL    https://github.com/smooll-d/sclc/raw/refs/heads/master/sclc.meta.js
 // @downloadURL  https://github.com/smooll-d/sclc/releases/latest/download/sclc.user.js
 // @supportURL   https://github.com/smooll-d/sclc/issues
